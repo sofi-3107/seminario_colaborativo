@@ -3,6 +3,7 @@ package com.uesiglo21.demo.entities;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,12 +28,10 @@ public class Pedido {
 	@Temporal(TemporalType.DATE)
 	private Calendar fecha;
 	
-	@ManyToMany
-	@JoinTable(
-	name="producto_pedido",
-	joinColumns=@JoinColumn(name="id_pedido"),
-	inverseJoinColumns=@JoinColumn(name="id_producto"))
-	List<Producto>productos;
+
+
+	@OneToMany(mappedBy="pedido")
+	Set<DetallePedido>detallePedido;
 	
 	@Column
 	Double importeTotal;
@@ -52,12 +52,12 @@ public class Pedido {
 		this.fecha = fecha;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
+	public Set<DetallePedido> getDetallePedido() {
+		return detallePedido;
 	}
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	public void setDetallePedido(Set<DetallePedido> detallePedido) {
+		this.detallePedido = detallePedido;
 	}
 
 	public Double getImporteTotal() {
@@ -69,4 +69,5 @@ public class Pedido {
 	}
 	
 	
-}
+
+	}
