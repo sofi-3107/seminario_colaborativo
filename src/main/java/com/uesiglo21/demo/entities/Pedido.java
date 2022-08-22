@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Pedido {
 	
 
 
-	@OneToMany(mappedBy="pedido")
+	@OneToMany(mappedBy="pedido",cascade= {CascadeType.MERGE,CascadeType.PERSIST})
 	Set<DetallePedido>detallePedido;
 	
 	@Column

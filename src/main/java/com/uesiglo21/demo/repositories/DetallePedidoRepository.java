@@ -1,14 +1,10 @@
 package com.uesiglo21.demo.repositories;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.uesiglo21.demo.entities.Pedido;
+import com.uesiglo21.demo.entities.DetallePedido;
 
 @Repository
-public interface PedidoRepository extends CrudRepository<Pedido,Integer>{
-	
-
+public interface DetallePedidoRepository extends CrudRepository<DetallePedido,Integer>{
 }

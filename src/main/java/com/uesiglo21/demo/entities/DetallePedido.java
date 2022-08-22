@@ -1,5 +1,6 @@
 package com.uesiglo21.demo.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class DetallePedido {
 	@ManyToOne
 	@JoinColumn(name="pedido_id")
 	Pedido pedido;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)	
 	@JoinColumn(name="producto_id")
 	Producto producto;
 	
