@@ -13,13 +13,14 @@ public class DetallePedido {
 
 	@Id
 	@GeneratedValue
-	@Column
+	
 	private Integer id;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="pedido_id")
 	Pedido pedido;
-	@ManyToOne(cascade=CascadeType.ALL)	
+	
+	@ManyToOne(cascade=CascadeType.REMOVE)	
 	@JoinColumn(name="producto_id")
 	Producto producto;
 	

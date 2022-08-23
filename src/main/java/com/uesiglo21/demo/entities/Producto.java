@@ -3,8 +3,10 @@ package com.uesiglo21.demo.entities;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -20,7 +22,7 @@ public class Producto {
 	@Column(length=25)
 	private String nombre;
 	
-	@OneToMany(mappedBy="producto")
+	@OneToMany(mappedBy="producto",cascade=CascadeType.PERSIST,fetch=FetchType.LAZY)
 	Set<DetallePedido>detallePedido;
 	
 	@Column

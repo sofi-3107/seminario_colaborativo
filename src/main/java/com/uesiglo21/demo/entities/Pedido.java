@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -31,7 +32,7 @@ public class Pedido {
 	
 
 
-	@OneToMany(mappedBy="pedido",cascade= {CascadeType.MERGE,CascadeType.PERSIST})
+	@OneToMany(mappedBy="pedido",cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
 	Set<DetallePedido>detallePedido;
 	
 	@Column
