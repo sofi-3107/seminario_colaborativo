@@ -1,3 +1,4 @@
+
 package com.uesiglo21.demo.services;
 
 import java.util.List;
@@ -22,10 +23,10 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
-	public Producto updateCantidad(Producto producto) throws Exception {
+	public Producto updateCantidad(Producto producto,int cantidadComprada) throws Exception {
 		Producto foundProducto=rep.findById(producto.getId()).get();
 		if (foundProducto!=null) {
-			foundProducto.setCantidadEnStock(producto.getCantidadEnStock());
+			foundProducto.setCantidadEnStock(producto.getCantidadEnStock()-cantidadComprada);
 			rep.save(foundProducto);
 		}
 		return foundProducto;
