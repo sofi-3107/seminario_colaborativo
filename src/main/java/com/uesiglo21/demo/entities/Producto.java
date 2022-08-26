@@ -1,6 +1,5 @@
 package com.uesiglo21.demo.entities;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Producto {
@@ -22,6 +22,7 @@ public class Producto {
 	@Column(length=25)
 	private String nombre;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="producto",cascade=CascadeType.PERSIST,fetch=FetchType.LAZY)
 	Set<DetallePedido>detallePedido;
 	

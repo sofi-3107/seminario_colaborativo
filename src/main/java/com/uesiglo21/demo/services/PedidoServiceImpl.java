@@ -21,9 +21,12 @@ public class PedidoServiceImpl  implements PedidoService{
 	@Override
 	public void crearPedido(Pedido pedido) throws Exception {
 		double totalPedido=0;
+		if(pedido.getDetallePedido()!=null) {
 			for(DetallePedido dp:pedido.getDetallePedido()) {
 				prodService.updateCantidad(dp.getProducto(), dp.getCantidad());
 				totalPedido+=dp.getCantidad()*dp.getProducto().getPrecioUnitario();
+			}}else {
+				System.out.println(pedido.getDetallePedido());
 			}
 		rep.save(pedido);		
 	}
