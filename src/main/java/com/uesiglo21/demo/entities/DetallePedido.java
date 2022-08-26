@@ -19,7 +19,7 @@ public class DetallePedido {
 	
 	private Integer id;
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.REMOVE)
+	@ManyToOne(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
 	@JoinColumn(name="pedido_id")
 	Pedido pedido;
 	

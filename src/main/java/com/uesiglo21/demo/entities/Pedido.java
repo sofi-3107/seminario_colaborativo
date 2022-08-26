@@ -32,7 +32,7 @@ public class Pedido {
 	
 
 
-	@OneToMany(mappedBy="pedido",cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="pedido",cascade= {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
 	Set<DetallePedido>detallePedido;
 	
 	@Column
