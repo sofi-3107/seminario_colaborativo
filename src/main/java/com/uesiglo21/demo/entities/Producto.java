@@ -54,9 +54,9 @@ public class Producto {
 	}
 
 
-	public Set<DetallePedido> getDetallePedido() {
+	/*public Set<DetallePedido> getDetallePedido() {
 		return detallePedido;
-	}
+	}*/
 
 
 	public void setDetallePedido(Set<DetallePedido> detallePedido) {

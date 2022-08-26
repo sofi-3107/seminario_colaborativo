@@ -18,8 +18,9 @@ public class DetallePedido {
 	@GeneratedValue
 	
 	private Integer id;
-	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
+	
+	
+	@ManyToOne(cascade=CascadeType.REMOVE,fetch=FetchType.EAGER)
 	@JoinColumn(name="pedido_id")
 	Pedido pedido;
 	
