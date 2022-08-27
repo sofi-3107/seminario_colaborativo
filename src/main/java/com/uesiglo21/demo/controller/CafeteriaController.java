@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uesiglo21.demo.entities.Pedido;
@@ -24,6 +25,8 @@ public class CafeteriaController {
 
 	@Autowired
 	PedidoRepository pedRep;
+	@Autowired
+	ProductoRepository prodRep;
 	
 	@Autowired
 	PedidoService pedService;
@@ -42,19 +45,22 @@ public class CafeteriaController {
 	
 	
 	@PostMapping("/pedido")
-	public void crearPedido(Pedido pedido) {
-		try {
-			pedService.crearPedido(pedido);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	public Pedido crearPedido(@RequestBody Pedido pedido) {
 		
+		return pedRep.save(pedido);
 		
 	}
 	
 	@GetMapping("/pedidos")
 	public List<Pedido>getAllPedidos(){
 		return (List<Pedido>) pedRep.findAll();
+	}
+	
+	
+	@PostMapping("/crear-producto")
+	
+	public Producto crearProducto(@RequestBody Producto producto) {
+		return prodRep.save(producto);
 	}
 
 }

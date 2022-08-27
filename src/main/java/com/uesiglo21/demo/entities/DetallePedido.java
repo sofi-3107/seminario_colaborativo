@@ -18,10 +18,10 @@ public class DetallePedido {
 	@GeneratedValue
 	
 	private Integer id;
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="pedido_id")
-	Pedido pedido;
+	Pedido pedido;*/
 	
 	
 	
@@ -40,13 +40,7 @@ public class DetallePedido {
 		this.id = id;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
-	}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
 
 	public Producto getProducto() {
 		return producto;
