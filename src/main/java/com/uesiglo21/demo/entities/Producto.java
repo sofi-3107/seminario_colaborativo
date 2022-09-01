@@ -26,6 +26,15 @@ public class Producto {
 
 	@Column
 	private int cantidadEnStock;
+	
+	@Column(length=50)
+	private String imagen;
+
+
+	public String getImagen() {
+		return imagen;	
+	}
+
 
 
 	public Integer getId() {
