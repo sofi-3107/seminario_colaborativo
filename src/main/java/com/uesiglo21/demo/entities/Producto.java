@@ -24,8 +24,8 @@ public class Producto {
 	 @Value("${server.port}")
 	    private String serverPort;
 	 
-	 String addr = InetAddress.getHostName();
-	    private String serverAddress;
+	
+	
 	
 	@Column
 	private double precioUnitario;
@@ -43,8 +43,7 @@ public class Producto {
 	}
 	
 	public void setImagen(String img) {
-		this.imagen=this.serverAddress+":"+this.serverPort+"/"+img;
-	}
+		this.imagen=img;}
 
 
 
