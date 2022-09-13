@@ -1,10 +1,13 @@
 package com.uesiglo21.demo.entities;
 
+import java.net.InetAddress;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Producto {
@@ -18,7 +21,11 @@ public class Producto {
 	
 	
 	//Set<DetallePedido>detallePedido;
-
+	 @Value("${server.port}")
+	    private String serverPort;
+	 
+	 String addr = InetAddress.getHostName();
+	    private String serverAddress;
 	
 	@Column
 	private double precioUnitario;
@@ -33,6 +40,10 @@ public class Producto {
 
 	public String getImagen() {
 		return imagen;	
+	}
+	
+	public void setImagen(String img) {
+		this.imagen=this.serverAddress+":"+this.serverPort+"/"+img;
 	}
 
 

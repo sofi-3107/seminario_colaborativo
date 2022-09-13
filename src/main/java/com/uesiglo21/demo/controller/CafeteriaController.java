@@ -34,7 +34,7 @@ public class CafeteriaController {
 	@Autowired
 	PedidoService pedService;
 	
-	@GetMapping("/productos")
+	@GetMapping("/")
 	public List<Producto>getAllProductos(){
 		
 		List<Producto> productos=new ArrayList<Producto>();
@@ -63,6 +63,7 @@ public class CafeteriaController {
 	@PostMapping("/crear-producto")
 	
 	public Producto crearProducto(@RequestBody Producto producto) {
+		
 		return prodRep.save(producto);
 	}
 

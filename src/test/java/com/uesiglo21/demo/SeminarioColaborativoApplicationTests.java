@@ -23,42 +23,10 @@ import com.uesiglo21.demo.repositories.ProductoRepository;
 @SpringBootTest
 class SeminarioColaborativoApplicationTests {
 
-	@Autowired
-	ProductoRepository prodRep;
-	
-	@Autowired
-	PedidoRepository pedRep;
-	
-	@Autowired
-	DetallePedidoRepository detRep;
+
 	
 	@Test
 	void contextLoads() {
-		DateFormat df=new SimpleDateFormat("dd/M/yy");
-		Calendar cal= new GregorianCalendar();
-		
-		try {
-			Date fecha= df.parse("21/08/022");
-		} catch (ParseException e) {
-			System.out.println(e);
-			
-		}
-		
-		Producto p1=new Producto();
-		Producto p2=new Producto();
-		
-		p1.setNombre("cafe con leche");
-		p1.setCantidadEnStock(15);
-		p1.setPrecioUnitario(50.0);
-		
-		p2.setNombre("submarino");
-		p2.setCantidadEnStock(10);
-		p2.setPrecioUnitario(150.0);
-		
-		prodRep.save(p1);
-		prodRep.save(p2);
-		
-		
 		
 		
 		
