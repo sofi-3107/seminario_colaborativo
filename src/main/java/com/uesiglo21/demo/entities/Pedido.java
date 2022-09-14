@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 public class Pedido {
 
@@ -37,6 +39,8 @@ public class Pedido {
 	
 	@Column
 	Double importeTotal;
+	
+
 
 	public Integer getId() {
 		return id;

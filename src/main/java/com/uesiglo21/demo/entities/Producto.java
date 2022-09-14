@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -21,10 +22,8 @@ public class Producto {
 	
 	
 	//Set<DetallePedido>detallePedido;
-	 @Value("${server.port}")
-	    private String serverPort;
-	 
 	
+
 	
 	
 	@Column
@@ -43,7 +42,9 @@ public class Producto {
 	}
 	
 	public void setImagen(String img) {
-		this.imagen=img;}
+		this.imagen=img;
+	}
+	
 
 
 
