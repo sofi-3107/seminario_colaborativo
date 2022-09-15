@@ -19,7 +19,7 @@ public class ProductoServiceImpl implements ProductoService{
 	@Override
 	public List<Producto> getAllProductos() throws Exception {
 		
-		return (List<Producto>) rep.findAll();
+		return (List<Producto>) rep.findByCantidadEnStockGreaterThan(0);
 	}
 
 	@Override
@@ -30,6 +30,12 @@ public class ProductoServiceImpl implements ProductoService{
 			rep.save(foundProducto);
 		}
 		return foundProducto;
+	}
+
+	@Override
+	public Producto findById(Integer id) throws Exception {
+		
+		return rep.findById(id).orElseThrow();
 	}
 
 }

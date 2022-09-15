@@ -23,15 +23,15 @@ import com.uesiglo21.demo.exceptions.ProductNotFoundException;
 import com.uesiglo21.demo.repositories.PedidoRepository;
 import com.uesiglo21.demo.repositories.ProductoRepository;
 import com.uesiglo21.demo.services.interfaces.PedidoService;
+import com.uesiglo21.demo.services.interfaces.ProductoService;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class CafeteriaController {
 	
 	@Autowired
-	ProductoRepository prodService;
-	@Value("${server.address}")
-	private String  address;
+	ProductoService prodService;
+
 
 	@Autowired
 	PedidoRepository pedRep;
@@ -41,12 +41,7 @@ public class CafeteriaController {
 	@Autowired
 	PedidoService pedService;
 
-	@Value("${server.port}")
-	private String serverPort;
 
-	
-	@Value("${server.address}")
-	private String serverAddress;
 	
 	@GetMapping("/")
 	public List<Producto>getAllProductos(){
@@ -54,7 +49,7 @@ public class CafeteriaController {
 			
 		List<Producto> productos=new ArrayList<Producto>();
 		try {
-			productos= (List<Producto>) prodService.findAll();
+			productos= (List<Producto>) prodService.getAllProductos();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -63,15 +58,9 @@ public class CafeteriaController {
 	
 	
 	@PostMapping("/pedido")
-	public Pedido crearPedido(@RequestBody Pedido pedido) {
-		Calendar hoy=new GregorianCalendar();
-		pedido.setFecha(hoy);
-		for( DetallePedido dp: pedido.getDetallePedido()) {
-			Producto p= prodRep.findById(dp.getProducto().getId()).orElseThrow();
-			p.setCantidadEnStock(p.getCantidadEnStock()-dp.getCantidad());
-		}
-		
-		return pedRep.save(pedido);
+	public Pedido crearPedido(@RequestBody Pedido pedido) throws Exception {
+
+		return pedService.crearPedido(pedido);
 		
 	}
 	
@@ -84,8 +73,13 @@ public class CafeteriaController {
 	@PostMapping("/crear-producto")
 	
 	public Producto crearProducto(@RequestBody Producto producto) {
-		producto.setImagen(serverAddress+":"+serverPort+"/"+producto.getImagen());
 		return prodRep.save(producto);
 	}
 
 }
+/*Calendar hoy=new GregorianCalendar();
+pedido.setFecha(hoy);
+for( DetallePedido dp: pedido.getDetallePedido()) {
+	Producto p= prodRep.findById(dp.getProducto().getId()).orElseThrow();
+	p.setCantidadEnStock(p.getCantidadEnStock()-dp.getCantidad());
+}*/

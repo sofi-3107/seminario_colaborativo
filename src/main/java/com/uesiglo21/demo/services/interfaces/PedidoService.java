@@ -4,6 +4,6 @@ import com.uesiglo21.demo.entities.Pedido;
 
 public interface PedidoService {
 	
-	public void crearPedido(Pedido pedido) throws Exception;
+	public Pedido crearPedido(Pedido pedido) throws Exception;
 
 }
