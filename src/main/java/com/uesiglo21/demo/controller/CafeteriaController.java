@@ -46,15 +46,14 @@ public class CafeteriaController {
 	
 	@PostMapping("/pedido")
 	public Pedido crearPedido(@RequestBody Pedido pedido) {
-		
-		return pedRep.save(pedido);
-		/*try {
-			pedService.crearPedido(pedido);
+		Pedido p= new Pedido();
+		try {
+			p= pedService.crearPedido(pedido);
 		} catch (Exception e) {
 			System.out.println(e);
-		}*/
+		}
 		
-		
+		return p;
 	}
 	
 	@PostMapping("/crear-producto")
