@@ -19,7 +19,7 @@ public class PedidoServiceImpl  implements PedidoService{
 	ProductoService prodService;
 
 	@Override
-	public void crearPedido(Pedido pedido) throws Exception {
+	public Pedido crearPedido(Pedido pedido) throws Exception {
 		//double totalPedido=0;
 		if(pedido.getDetallePedido()!=null) {
 			for(DetallePedido dp:pedido.getDetallePedido()) {
@@ -28,7 +28,7 @@ public class PedidoServiceImpl  implements PedidoService{
 			}}else {
 				System.out.println(pedido.getDetallePedido());
 			}
-		rep.save(pedido);		
+		return rep.save(pedido);		
 	}
 	
 	
