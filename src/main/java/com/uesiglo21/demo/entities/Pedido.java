@@ -1,8 +1,6 @@
 package com.uesiglo21.demo.entities;
 
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,11 +28,24 @@ public class Pedido {
 	
 
 
-	@OneToMany(mappedBy="pedido",cascade= {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
+	@OneToMany(cascade= {CascadeType.PERSIST,CascadeType.REMOVE},fetch=FetchType.EAGER,orphanRemoval=true)
 	Set<DetallePedido>detallePedido;
 	
 	@Column
 	Double importeTotal;
+	
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE},fetch=FetchType.EAGER)
+	Cliente cliente;
+	
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public Integer getId() {
 		return id;
