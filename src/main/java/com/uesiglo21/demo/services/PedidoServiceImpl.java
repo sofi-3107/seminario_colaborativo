@@ -27,13 +27,12 @@ public class PedidoServiceImpl  implements PedidoService{
 	ClienteRepository cliRep;
 	@Override
 	public Pedido crearPedido(Pedido pedido) throws Exception {
-		double totalPedido=0;
+		//double totalPedido=0;
 		if(pedido.getDetallePedido()!=null) {
 			for(DetallePedido dp:pedido.getDetallePedido()) {
 				prodService.updateCantidad(dp.getProducto(), dp.getCantidad());
-				totalPedido+=dp.getCantidad()*dp.getProducto().getPrecioUnitario();
-				Producto p= prodService.findById(dp.getProducto().getId());
-				p.setCantidadEnStock(p.getCantidadEnStock()-dp.getCantidad());
+				//totalPedido+=dp.getCantidad()*dp.getProducto().getPrecioUnitario();
+				
 			}
 			
 		}else {
@@ -48,7 +47,7 @@ public class PedidoServiceImpl  implements PedidoService{
 				}
 				
 				
-		pedido.setImporteTotal(totalPedido);
+		//pedido.setImporteTotal(totalPedido);
 				
 		
 		return rep.save(pedido);

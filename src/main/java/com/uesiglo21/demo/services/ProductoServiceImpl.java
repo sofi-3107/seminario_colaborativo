@@ -26,7 +26,7 @@ public class ProductoServiceImpl implements ProductoService{
 	public Producto updateCantidad(Producto producto,int cantidadComprada) throws Exception {
 		Producto foundProducto=rep.findById(producto.getId()).get();
 		if (foundProducto!=null) {
-			foundProducto.setCantidadEnStock(producto.getCantidadEnStock()-cantidadComprada);
+			foundProducto.setCantidadEnStock(foundProducto.getCantidadEnStock()-cantidadComprada);
 			rep.save(foundProducto);
 		}
 		return foundProducto;
