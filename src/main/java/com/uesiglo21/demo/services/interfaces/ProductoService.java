@@ -9,5 +9,5 @@ public interface ProductoService {
 	public List<Producto>getAllProductos() throws Exception;
 	
 	public Producto updateCantidad(Producto producto, int cantidadComprada) throws Exception;
-
+	public Producto findById(Integer id) throws Exception;
 }
