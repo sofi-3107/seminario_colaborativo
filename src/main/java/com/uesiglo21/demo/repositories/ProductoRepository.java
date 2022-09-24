@@ -11,5 +11,5 @@ import com.uesiglo21.demo.exceptions.ProductNotFoundException;
 @Repository
 public interface ProductoRepository extends CrudRepository<Producto,Integer>{
 
-	List<Producto>findByCantidadEnStockGreaterThan(int cantidad)throws ProductNotFoundException;
+	List<Producto>findByCantidadEnStockGreaterThan(int cantidad);
 }

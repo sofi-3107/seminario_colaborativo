@@ -2,6 +2,7 @@ package com.uesiglo21.demo.services;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class PedidoServiceImpl  implements PedidoService{
 				
 		
 		return rep.save(pedido);
+	}
+	@Override
+	public List<Pedido> listAllPedidos() {
+		
+		return (List<Pedido>) rep.findAll();
 	}
 	
 	
