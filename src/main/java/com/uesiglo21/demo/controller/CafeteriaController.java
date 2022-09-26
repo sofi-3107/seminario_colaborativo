@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,19 +37,20 @@ public class CafeteriaController {
 		return (List<Producto>) prodService.getAllProductos();
 	}
 	
-	
+	@Secured({"CLIENTE","ADMIN"})
 	@PostMapping("/nuevo-pedido")
 	public Pedido crearPedido(@RequestBody Pedido pedido) throws Exception {
 		return pedService.crearPedido(pedido);
 		
 	}
 	
+	@Secured("ADMIN")
 	@GetMapping("/pedidos")
 	public List<Pedido>getAllPedidos(){
 		return pedService.listAllPedidos();
 	}
 	
-	
+	@Secured("ADMIN")
 	@PostMapping("/crear-producto")
 	
 	public Producto crearProducto(@RequestBody Producto producto) {
