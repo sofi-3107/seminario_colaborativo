@@ -60,7 +60,7 @@ public class CafeteriaController {
 		return prodService.guardarProducto(producto);		
 	}
 	
-	@DeleteMapping("/delete-producto/{id}")
+	@DeleteMapping("/eliminar-producto/{id}")
 	public ResponseEntity<String> deleteProducto (@PathVariable int id) {	
 				prodService.deleteProducto(id);
 			return  ResponseEntity.ok("Producto "+id+ " eliminado correctamente");
