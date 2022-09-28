@@ -48,19 +48,25 @@ public class WebSecurityConfig {
 	}
 	
 	
-/*	@Bean
+	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http)throws Exception {
 		
 		http.csrf().disable()
-			.antMatcher("/")
 			.authorizeRequests()
+			.antMatchers("/").permitAll()
 			.antMatchers("/pedido").hasRole("CLIENTE")
 	        .antMatchers("/crear-producto").hasRole("ADMIN")
-			.anyRequest().authenticated();
+	        .anyRequest().authenticated();		
 
 		return http.build();
 		
-	}*/
+	}
+	
+	 @Bean
+	    protected void configure(HttpSecurity security) throws Exception
+	    {
+	     security.httpBasic().disable();
+	    }
 	
 	
 }
