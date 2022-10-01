@@ -1,4 +1,4 @@
-# seminario_colaborativo
+# seminario_colaborativo ver rama withoutmanytomany
 
 Es una pequeña API rest que permite ver los productos que ofrece una cafeteria y realizar pedidos.
 Almacena la información de Pedidos, Productos y Clientes en MYSQL en una tabla llamada "cafeteria"
